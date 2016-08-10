@@ -50,7 +50,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         for (GameObject object : this.objects) {
             object.update();
         }
-        this.stats.update();
+        if (this.stats != null) {
+            this.stats.update();
+        }
     }
 
     public void render(Canvas canvas) {
@@ -58,7 +60,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         for (GameObject object : this.objects) {
             object.render(canvas);
         }
-        this.stats.render(canvas);
+        if (this.stats != null) {
+            this.stats.render(canvas);
+        }
     }
 
     public void addGameObject(GameObject object) {
