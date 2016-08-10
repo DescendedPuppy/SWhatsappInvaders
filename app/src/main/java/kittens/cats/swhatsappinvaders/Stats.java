@@ -25,15 +25,20 @@ public class Stats extends GameObject {
 
     private String item;
 
-    private Stats(DoubleVector location, double width, double height) {
-        super(EntityType.STATS, location, width, height);
+    private Stats(DoubleVector location) {
+        super(EntityType.STATS, location);
     }
 
-    public static Stats getStats(DoubleVector location, double width, double height){
+    public static Stats getStats(DoubleVector location){
         if(Stats.stats == null){
-            Stats.stats = new Stats(location, width, height);
+            Stats.stats = new Stats(location);
         }
         return Stats.stats;
+    }
+
+    @Override
+    public void init(int width, int height) {
+
     }
 
     @Override
