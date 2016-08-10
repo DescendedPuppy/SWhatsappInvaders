@@ -14,8 +14,8 @@ public class Stats extends GameObject {
 
     private static Stats stats;
 
-    private int score;
-    private int lives;
+    private int score = 10000;
+    private int lives = 3;
     private int kills;
 
     private double halfwidth;
