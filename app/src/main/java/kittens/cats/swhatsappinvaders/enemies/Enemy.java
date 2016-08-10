@@ -1,6 +1,7 @@
 package kittens.cats.swhatsappinvaders.enemies;
 
 
+import kittens.cats.swhatsappinvaders.DoubleVector;
 import kittens.cats.swhatsappinvaders.EntityType;
 import kittens.cats.swhatsappinvaders.GameObject;
 
@@ -9,9 +10,9 @@ public abstract class Enemy extends GameObject {
     private int health;
     private int damage;
 
-    public Enemy(EntityType tag, int health, int damage) {
+    public Enemy(EntityType tag, DoubleVector location, double width, double height, int damage, int health) {
 
-        super(tag);
+        super(tag, location, width, height);
         setDamage(damage);
         setHealth(health);
 
