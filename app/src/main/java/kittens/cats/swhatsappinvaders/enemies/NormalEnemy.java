@@ -2,9 +2,10 @@ package kittens.cats.swhatsappinvaders.enemies;
 
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
 import kittens.cats.swhatsappinvaders.DoubleVector;
-import kittens.cats.swhatsappinvaders.EntityType;
 
 public class NormalEnemy extends Enemy {
 
@@ -20,6 +21,12 @@ public class NormalEnemy extends Enemy {
 
     @Override
     public void render(Canvas canvas) {
+
+        Paint p = new Paint();
+        p.setColor(Color.RED);
+        canvas.drawRect((float) getLocation().x, (float) getLocation().y, (float) getWidth(), (float) getHeight(), p);
+
+
 
     }
 }
