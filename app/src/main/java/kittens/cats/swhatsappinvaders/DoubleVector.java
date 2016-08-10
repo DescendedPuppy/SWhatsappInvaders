@@ -1,11 +1,9 @@
 package kittens.cats.swhatsappinvaders;
 
-/**
- * Created by a cat
- */
 public class DoubleVector {
 
-    public double x, y;
+    public double x;
+    public double y;
 
     public DoubleVector(double x, double y) {
 
