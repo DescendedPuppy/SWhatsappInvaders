@@ -67,7 +67,7 @@ public class MainThread extends Thread {
             totalTime += System.currentTimeMillis() - startTime;
 
             if (frameCounter >= MainThread.MAX_FPS) {
-                this.averageFps = 1000 / ((totalTime / frameCounter) / 1000);
+                this.averageFps = 1000D / ((totalTime / frameCounter) / 1000D);
 
                 frameCounter = 0;
                 totalTime = 0;
