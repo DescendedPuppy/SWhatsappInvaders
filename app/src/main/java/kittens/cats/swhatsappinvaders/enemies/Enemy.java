@@ -1,9 +1,9 @@
 package kittens.cats.swhatsappinvaders.enemies;
 
 
-import kittens.cats.swhatsappinvaders.DoubleVector;
 import kittens.cats.swhatsappinvaders.EntityType;
 import kittens.cats.swhatsappinvaders.GameObject;
+import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 public abstract class Enemy extends GameObject {
 

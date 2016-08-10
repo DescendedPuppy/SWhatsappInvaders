@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import kittens.cats.swhatsappinvaders.DoubleVector;
+import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 public class NormalEnemy extends Enemy {
 

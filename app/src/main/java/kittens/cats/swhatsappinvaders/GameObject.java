@@ -1,5 +1,7 @@
 package kittens.cats.swhatsappinvaders;
 
+import kittens.cats.swhatsappinvaders.util.DoubleVector;
+
 public abstract class GameObject implements Renderable {
 
     private DoubleVector location;
