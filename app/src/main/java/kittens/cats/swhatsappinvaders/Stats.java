@@ -23,10 +23,10 @@ public class Stats extends GameObject {
     private double leftscreen;
     private double rightscreen;
 
-    private Item item;
+    private String item;
 
     private Stats(DoubleVector location, double width, double height) {
-        super(EntityType.Stats, location, width, height);
+        super(EntityType.STATS, location, width, height);
     }
 
     public static Stats getStats(DoubleVector location, double width, double height){
@@ -74,7 +74,7 @@ public class Stats extends GameObject {
         this.kills = kills;
 
     }
-    public void setItem(Item item){
+    public void setItem(String item){
 
         this.item = item;
 
@@ -96,7 +96,7 @@ public class Stats extends GameObject {
         return this.kills;
 
     }
-    public Item getItem(){
+    public String getItem(){
 
         return this.item;
 
