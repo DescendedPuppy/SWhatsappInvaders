@@ -3,10 +3,15 @@ package kittens.cats.swhatsappinvaders.enemies;
 
 import android.graphics.Canvas;
 
+import kittens.cats.swhatsappinvaders.EntityType;
+
 public class Boss extends Enemy {
 
-    public Boss(int health, int damage) {
-        super(health, damage);
+
+    public Boss(EntityType tag, int health, int damage) {
+
+        super(tag, health, damage);
+
     }
 
     @Override

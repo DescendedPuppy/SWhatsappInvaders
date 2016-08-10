@@ -3,11 +3,13 @@ package kittens.cats.swhatsappinvaders.enemies;
 
 import android.graphics.Canvas;
 
+import kittens.cats.swhatsappinvaders.EntityType;
+
 public class NormalEnemy extends Enemy {
 
-    public NormalEnemy(int health, int damage) {
+    public NormalEnemy(EntityType tag, int health, int damage) {
 
-        super(health, damage);
+        super(tag, health, damage);
 
     }
 
