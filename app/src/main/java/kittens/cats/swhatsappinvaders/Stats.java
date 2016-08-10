@@ -10,19 +10,28 @@ import android.graphics.Paint;
  */
 public class Stats extends GameObject {
 
-    public int score;
-    public int lives;
-    public int kills;
+    private static Stats stats;
 
-    public double halfwidth;
-    public double bottomscreen;
-    public double leftscreen;
-    public double rightscreen;
+    private int score;
+    private int lives;
+    private int kills;
 
-    Item item;
+    private double halfwidth;
+    private double bottomscreen;
+    private double leftscreen;
+    private double rightscreen;
 
-    public Stats(EntityType tag, DoubleVector location, double width, double height) {
-        super(tag, location, width, height);
+    private Item item;
+
+    private Stats(DoubleVector location, double width, double height) {
+        super(EntityType.Stats, location, width, height);
+    }
+
+    public static Stats getStats(DoubleVector location, double width, double height){
+        if(Stats.stats == null){
+            Stats.stats = new Stats(location, width, height);
+        }
+        return Stats.stats;
     }
 
     @Override
