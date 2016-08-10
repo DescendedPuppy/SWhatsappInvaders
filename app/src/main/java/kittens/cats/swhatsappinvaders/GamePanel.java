@@ -66,6 +66,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void addGameObject(GameObject object) {
+        object.init(this.getHeight(), this.getWidth());
         this.objects.add(object);
     }
 

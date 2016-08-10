@@ -31,6 +31,10 @@ public class MainThread extends Thread {
         long frameCounter = 0;
         long totalTime = 0;
 
+        for (GameObject object : this.panel.getObjects()) {
+            object.init(this.panel.getWidth(), this.panel.getHeight());
+        }
+
         while (this.isRunning()) {
             startTime = System.currentTimeMillis();
             Canvas canvas = null;
