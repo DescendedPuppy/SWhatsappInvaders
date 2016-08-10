@@ -74,8 +74,6 @@ public class MainThread extends Thread {
 
                 Log.d(MainThread.TAG, "Average FPS: " +  this.averageFps);
             }
-
-            this.holder.unlockCanvasAndPost(canvas);
         }
     }
 
