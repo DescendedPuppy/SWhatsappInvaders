@@ -9,8 +9,8 @@ import kittens.cats.swhatsappinvaders.EntityType;
 public class NormalEnemy extends Enemy {
 
 
-    public NormalEnemy(EntityType tag, DoubleVector location, double width, double height, int damage, int health) {
-        super(tag, location, width, height, damage, health);
+    public NormalEnemy(DoubleVector location, double width, double height) {
+        super(location, width, height);
     }
 
     @Override

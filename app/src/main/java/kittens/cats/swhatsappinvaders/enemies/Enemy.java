@@ -7,14 +7,12 @@ import kittens.cats.swhatsappinvaders.GameObject;
 
 public abstract class Enemy extends GameObject {
 
-    private int health;
-    private int damage;
+    private int health = 1;
+    private int damage = 1;
 
-    public Enemy(EntityType tag, DoubleVector location, double width, double height, int damage, int health) {
+    public Enemy(DoubleVector location, double width, double height) {
 
-        super(tag, location, width, height);
-        setDamage(damage);
-        setHealth(health);
+        super(EntityType.ENEMY, location, width, height);
 
     }
 
