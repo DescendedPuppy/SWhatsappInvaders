@@ -6,7 +6,9 @@ import android.graphics.Canvas;
 public class NormalEnemy extends Enemy {
 
     public NormalEnemy(int health, int damage) {
+
         super(health, damage);
+
     }
 
     @Override
