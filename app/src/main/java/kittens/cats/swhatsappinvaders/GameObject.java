@@ -15,11 +15,9 @@ public abstract class GameObject implements Renderable {
 
 
 
-    public GameObject(EntityType tag, DoubleVector location, double width, double height){
+    public GameObject(EntityType tag, DoubleVector location){
 
         setTag(tag);
-        setHeight(height);
-        setWidth(width);
         setLocation(location);
 
     }
