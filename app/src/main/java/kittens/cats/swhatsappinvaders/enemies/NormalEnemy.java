@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
@@ -31,19 +32,15 @@ public class NormalEnemy extends Enemy {
     public void render(Canvas canvas) {
 
         Paint p = new Paint();
+        p.setColor(Color.GREEN);
 
-        p.setColor(Color.RED);
+        Bitmap invaderNormal = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.invader_normal);
 
-        canvas.drawRect((float) getLocation().x, (float) getLocation().y, (float) (getLocation().x + getWidth()), (float) (getLocation().y + getHeight()), p);
+        Rect rect = new Rect();
+        rect.set((int) getLocation().x, (int) getLocation().y, ((int) getLocation().x + (int) getWidth()), ((int) getLocation().y + (int) getHeight()));
 
-        p.setColor(Color.YELLOW);
+        canvas.drawBitmap(invaderNormal, null, rect, p);
 
-
-        //canvas.drawRect((float) getLocation().x, (float) getLocation().y,
-      //          (float) (canvas.getWidth() - getLocation().x) - (playerwidth / 11), (float) (canvas.getHeight() - getLocation().y) - (playerheight / 8), p);
-
-
-        //  canvas.drawRect((float) (getLocation().x + getWidth()) + 50, (float) getLocation().y - 50, (float) (getLocation().x + getWidth()) + 50, (float) getLocation().y - 50, p);
 
     }
 
