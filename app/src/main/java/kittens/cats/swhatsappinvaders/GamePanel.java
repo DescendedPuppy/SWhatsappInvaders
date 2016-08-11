@@ -24,6 +24,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
         this.player = player;
         this.objects = new ArrayList<>();
+        GameContext.setPlayer(player);
+        this.stats = Stats.getStats();
 
         this.getHolder().addCallback(this);
     }
@@ -77,9 +79,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         for (GameObject object : this.objects) {
             object.update();
         }
-        if (this.stats != null) {
-            this.stats.update();
-        }
         if (this.player != null) {
             this.player.update();
         }
@@ -96,6 +95,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         if (this.player != null) {
             this.player.render(canvas);
         }
+        this.stats.render(canvas);
     }
 
     public void addGameObject(GameObject object) {
