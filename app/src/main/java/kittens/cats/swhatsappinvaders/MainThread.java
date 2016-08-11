@@ -36,6 +36,7 @@ public class MainThread extends Thread {
         for (GameObject object : this.panel.getObjects()) {
             object.init(this.panel.getWidth(), this.panel.getHeight());
         }
+        this.panel.getPlayer().init(this.panel.getWidth(), this.panel.getHeight());
 
         while (this.isRunning()) {
             startTime = System.currentTimeMillis();
