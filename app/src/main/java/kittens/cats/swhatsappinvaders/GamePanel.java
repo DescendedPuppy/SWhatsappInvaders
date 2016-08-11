@@ -77,7 +77,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update() {
-        for (GameObject object : this.objects) {
+        List<GameObject> objectsCopy = new ArrayList<>(this.objects);
+        for (GameObject object : objectsCopy) {
             object.update();
             if (object instanceof Enemy) {
                 Enemy enemy = (Enemy) object;
