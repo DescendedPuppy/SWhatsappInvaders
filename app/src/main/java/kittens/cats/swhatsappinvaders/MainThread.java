@@ -6,6 +6,8 @@ import android.view.SurfaceHolder;
 
 public class MainThread extends Thread {
 
+    private static long deltaTime;
+
     public static final String TAG = "MainThread";
 
     public static final int MAX_FPS = 30;
@@ -56,8 +58,8 @@ public class MainThread extends Thread {
                     }
                 }
             }
-            long timeVar = System.currentTimeMillis() - startTime;
-            timeDiff = MainThread.TARGET_TIME - timeVar;
+            MainThread.deltaTime = System.currentTimeMillis() - startTime;
+            timeDiff = MainThread.TARGET_TIME - MainThread.deltaTime;
 
             try {
                 if (timeDiff > 0) {
@@ -79,6 +81,10 @@ public class MainThread extends Thread {
                 Log.d(MainThread.TAG, "Average FPS: " +  this.averageFps);
             }
         }
+    }
+
+    public static long getDeltaTime() {
+        return deltaTime;
     }
 
     public boolean isRunning() {
