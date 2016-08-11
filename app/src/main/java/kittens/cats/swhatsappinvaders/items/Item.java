@@ -12,6 +12,7 @@ import java.util.Random;
 import kittens.cats.swhatsappinvaders.EntityType;
 import kittens.cats.swhatsappinvaders.GameObject;
 import kittens.cats.swhatsappinvaders.GamePanel;
+import kittens.cats.swhatsappinvaders.MainThread;
 import kittens.cats.swhatsappinvaders.R;
 import kittens.cats.swhatsappinvaders.enemies.Enemy;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
@@ -28,6 +29,8 @@ public class Item extends GameObject{
     public Item(ItemType type, Context context, DoubleVector location) {
         super(context, EntityType.ITEM, location);
 
+        this.type = type;
+        setSpeed(1000);
 
     }
 
@@ -42,7 +45,7 @@ public class Item extends GameObject{
 
     @Override
     public void update() {
-
+        this.getLocation().y += this.getSpeed() * MainThread.getDeltaTime() / 1000D;
     }
 
     @Override
@@ -62,11 +65,11 @@ public class Item extends GameObject{
 
 
 
-
                 if (randomn == 56 || randomn == 21 || randomn == 2 || randomn == 76 || randomn == 43 || randomn == 45)
                 {
                     panel.addGameObject(new Item(ItemType.SHOTGUN, panel.getContext(),
                             new DoubleVector(enemy.getLocation().x, enemy.getLocation().y)));
+
 
 //shot
                 }
