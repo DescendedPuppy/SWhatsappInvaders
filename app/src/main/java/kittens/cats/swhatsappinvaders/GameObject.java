@@ -11,7 +11,7 @@ public abstract class GameObject implements Renderable {
     private double width;
     private double height;
     private Context context;
-
+    private double speed;
 
 
     public abstract void update();
@@ -25,6 +25,15 @@ public abstract class GameObject implements Renderable {
         this.context = context;
 
     }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
 
     public Context getContext() {
         return context;
