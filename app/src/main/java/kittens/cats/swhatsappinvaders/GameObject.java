@@ -33,7 +33,7 @@ public abstract class GameObject implements Renderable {
     public void setSpeed(double speed) {
         this.speed = speed;
     }
-    
+
     public Context getContext() {
         return context;
     }
