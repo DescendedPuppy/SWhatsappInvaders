@@ -10,9 +10,16 @@ public abstract class Enemy extends GameObject {
     private int health = 1;
     private int damage = 1;
 
-    public Enemy(DoubleVector location, double width, double height) {
+    public Enemy(DoubleVector location) {
 
-        super(EntityType.ENEMY, location, width, height);
+        super(EntityType.ENEMY, location);
+
+    }
+
+
+    public void doDamage(int damage){
+
+        setHealth(getHealth() - damage);
 
     }
 
