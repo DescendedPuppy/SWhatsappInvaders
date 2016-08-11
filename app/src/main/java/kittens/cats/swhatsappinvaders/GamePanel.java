@@ -2,21 +2,27 @@ package kittens.cats.swhatsappinvaders;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import kittens.cats.swhatsappinvaders.player.Player;
+
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
+    private Player player;
     private MainThread thread;
     private List<GameObject> objects;
     private Stats stats;
     
-    public GamePanel(Context context) {
+    public GamePanel(Player player, Context context) {
         super(context);
 
+        this.player = player;
         this.objects = new ArrayList<>();
 
         this.getHolder().addCallback(this);
@@ -46,12 +52,36 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    float touchX = -1;
+    float touchY = -1;
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        touchX = event.getX();
+        touchY = event.getY();
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                this.player.getLocation().x = touchX;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                this.player.getLocation().x = touchX;
+                break;
+            case MotionEvent.ACTION_UP:
+                this.player.getLocation().x = touchX;
+                break;
+        }
+        return true;
+    }
+
     public void update() {
         for (GameObject object : this.objects) {
             object.update();
         }
         if (this.stats != null) {
             this.stats.update();
+        }
+        if (this.player != null) {
+            this.player.update();
         }
     }
 
@@ -62,6 +92,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         }
         if (this.stats != null) {
             this.stats.render(canvas);
+        }
+        if (this.player != null) {
+            this.player.render(canvas);
         }
     }
 
@@ -80,6 +113,10 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
     public void setStats(Stats stats) {
         this.stats = stats;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
 }
