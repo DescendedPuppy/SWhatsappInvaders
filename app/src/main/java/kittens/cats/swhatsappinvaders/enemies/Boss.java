@@ -8,8 +8,8 @@ import kittens.cats.swhatsappinvaders.util.DoubleVector;
 public class Boss extends Enemy {
 
 
-    public Boss(DoubleVector location, double width, double height) {
-        super(location, width, height);
+    public Boss(DoubleVector location) {
+        super(location);
     }
 
     @Override
@@ -21,6 +21,11 @@ public class Boss extends Enemy {
     public void render(Canvas canvas) {
 
 
+
+    }
+
+    @Override
+    public void init(int width, int height) {
 
     }
 }
