@@ -20,7 +20,7 @@ import kittens.cats.swhatsappinvaders.util.DoubleVector;
 /**
  * Created by guidsmel16 on 10.08.2016.
  */
-public class Item extends GameObject{
+public abstract class Item extends GameObject{
 
     private static Bitmap bitmapDoubleItem;
 
@@ -67,7 +67,7 @@ public class Item extends GameObject{
 
                 if (randomn == 56 || randomn == 21 || randomn == 2 || randomn == 76 || randomn == 43 || randomn == 45)
                 {
-                    panel.addGameObject(new Item(ItemType.SHOTGUN, panel.getContext(),
+                    panel.addGameObject(new ShotgunItem(panel.getContext(),
                             new DoubleVector(enemy.getLocation().x, enemy.getLocation().y)));
 
 
@@ -75,7 +75,7 @@ public class Item extends GameObject{
                 }
                 if (randomn == 23 || randomn == 54 || randomn == 42 || randomn == 79 || randomn == 17 || randomn == 5)
                 {
-                    panel.addGameObject(new Item(ItemType.SHIELD, panel.getContext(),
+                    panel.addGameObject(new ShieldItem(panel.getContext(),
                             new DoubleVector(enemy.getLocation().x, enemy.getLocation().y)));
 //shi
                 }
@@ -114,5 +114,7 @@ public class Item extends GameObject{
                 }
 
             }
+
+    public abstract void onUse();
 
         }
