@@ -1,5 +1,6 @@
 package kittens.cats.swhatsappinvaders;
 
+import android.content.Context;
 import android.content.Entity;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -16,8 +17,8 @@ public class Bullet extends GameObject{
     private int color;
     private double dmg;
 
-    public Bullet (DoubleVector location, double width, double height){
-        super(EntityType.BULLET, location, width, height);
+    public Bullet (Context context, DoubleVector location){
+        super(context, EntityType.BULLET, location);
         speedX = 0;
         speedY = 20;
         color = Color.WHITE;
@@ -58,8 +59,14 @@ public class Bullet extends GameObject{
 
     @Override
     public void update() {
-        getLocation().x += speedX;
-        getLocation().y += speedY;
+        getLocation().x += speedX * MainThread.getDeltaTime() / 1000D;
+        getLocation().y += speedY * MainThread.getDeltaTime() / 1000D;
+
+
+    }
+
+    @Override
+    public void onCollision(GameObject other) {
 
     }
 
@@ -69,5 +76,11 @@ public class Bullet extends GameObject{
         paint.setColor(color);
         canvas.drawRect((float)getLocation().x, (float)getLocation().y, (float)(getLocation().x + getWidth()), (float)(getLocation().y + getHeight()), paint);
 
+    }
+
+    @Override
+    public void init(int width, int height) {
+        this.setWidth(width / 100);
+        this.setHeight(width / 20);
     }
 }
