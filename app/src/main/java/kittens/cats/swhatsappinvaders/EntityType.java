@@ -7,7 +7,8 @@ public enum EntityType {
     PLAYER,
     BULLET,
     STATS,
-    ITEM
+    ITEM,
+    HOUSE
 
 
 }
