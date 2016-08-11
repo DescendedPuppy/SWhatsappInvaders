@@ -1,18 +1,25 @@
 package kittens.cats.swhatsappinvaders.enemies;
 
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
+
+import kittens.cats.swhatsappinvaders.MainActivity;
+import kittens.cats.swhatsappinvaders.R;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 public class NormalEnemy extends Enemy {
 
 
-    public NormalEnemy(DoubleVector location) {
-        super(location);
+    public NormalEnemy(Context context, DoubleVector location) {
+        super(context, location);
     }
 
     @Override
@@ -22,8 +29,6 @@ public class NormalEnemy extends Enemy {
 
     @Override
     public void render(Canvas canvas) {
-
-
 
         Paint p = new Paint();
 
