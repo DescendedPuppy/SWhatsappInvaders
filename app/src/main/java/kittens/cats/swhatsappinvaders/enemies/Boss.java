@@ -1,6 +1,7 @@
 package kittens.cats.swhatsappinvaders.enemies;
 
 
+import android.content.Context;
 import android.graphics.Canvas;
 
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
@@ -8,8 +9,8 @@ import kittens.cats.swhatsappinvaders.util.DoubleVector;
 public class Boss extends Enemy {
 
 
-    public Boss(DoubleVector location, double width, double height) {
-        super(location, width, height);
+    public Boss(Context context, DoubleVector location) {
+        super(context, location);
     }
 
     @Override
@@ -21,6 +22,11 @@ public class Boss extends Enemy {
     public void render(Canvas canvas) {
 
 
+
+    }
+
+    @Override
+    public void init(int width, int height) {
 
     }
 }
