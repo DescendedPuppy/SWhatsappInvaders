@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-import kittens.cats.swhatsappinvaders.GameObject;
 import kittens.cats.swhatsappinvaders.R;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
 

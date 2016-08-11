@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-import kittens.cats.swhatsappinvaders.GameObject;
 import kittens.cats.swhatsappinvaders.MainThread;
 import kittens.cats.swhatsappinvaders.R;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
@@ -30,7 +29,6 @@ public class NormalEnemy extends Enemy {
     @Override
     public void update() {
 
-
     if(getLocation().x <= 0 || getLocation().x >= tempCanvasWidth - 125){
 
 
@@ -48,6 +46,7 @@ public class NormalEnemy extends Enemy {
 
     }
 
+
     @Override
     public void render(Canvas canvas) {
 
@@ -61,7 +60,6 @@ public class NormalEnemy extends Enemy {
 
         Rect rect = new Rect();
         rect.set((int) getLocation().x, (int) getLocation().y, ((int) getLocation().x + (int) getWidth()), ((int) getLocation().y + (int) getHeight()));
-
 
         canvas.drawBitmap(toBeDrawn, null, rect, p);
 

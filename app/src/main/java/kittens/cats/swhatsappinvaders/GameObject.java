@@ -34,6 +34,7 @@ public abstract class GameObject implements Renderable {
         this.speed = speed;
     }
 
+
     public Context getContext() {
         return context;
     }
