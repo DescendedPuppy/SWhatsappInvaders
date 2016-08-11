@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.util.Log;
 
 import kittens.cats.swhatsappinvaders.MainThread;
 import kittens.cats.swhatsappinvaders.R;
@@ -23,7 +24,7 @@ public class NormalEnemy extends Enemy {
 
     public NormalEnemy(Context context, DoubleVector location) {
         super(context, location);
-        setSpeed(750);
+        setSpeed(1250);
     }
 
     @Override
@@ -31,10 +32,8 @@ public class NormalEnemy extends Enemy {
 
     if(getLocation().x <= 0 || getLocation().x >= tempCanvasWidth - 125){
 
-
-
         setSpeed(getSpeed() * -1);
-
+        setLocation(new DoubleVector(getLocation().x, getLocation().y + getHeight()));
     }
 
         setLocation(new DoubleVector(getLocation().x + (getSpeed() / 1000) * MainThread.getDeltaTime(), getLocation().y));
