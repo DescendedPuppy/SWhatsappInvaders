@@ -15,14 +15,14 @@ public class Bullet extends GameObject{
     private float speedX;
     private float speedY;
     private int color;
-    private double dmg;
+    private int dmg;
 
-    public Bullet (Context context, DoubleVector location){
+    public Bullet (int damage, float speedX, float speedY, Context context, DoubleVector location){
         super(context, EntityType.BULLET, location);
-        speedX = 0;
-        speedY = 20;
+        this.speedX = speedX;
+        this.speedY = speedY;
         color = Color.WHITE;
-        dmg = 100;
+        dmg = damage;
     }
 
     public float getSpeedX() {
@@ -41,11 +41,11 @@ public class Bullet extends GameObject{
         this.color = color;
     }
 
-    public double getDmg() {
+    public int getDmg() {
         return dmg;
     }
 
-    public void setDmg(double dmg) {
+    public void setDmg(int dmg) {
         this.dmg = dmg;
     }
 
