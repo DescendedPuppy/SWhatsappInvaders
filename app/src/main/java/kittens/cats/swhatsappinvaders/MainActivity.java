@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         GamePanel panel = new GamePanel(this);
         panel.addGameObject(new NormalEnemy(this, new DoubleVector(500, 500)));
-
+        panel.addGameObject(Stats.getStats(this));
         this.setContentView(panel);
 
 
