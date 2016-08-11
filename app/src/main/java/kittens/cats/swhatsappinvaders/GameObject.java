@@ -70,4 +70,16 @@ public abstract class GameObject implements Renderable {
         this.tag = tag;
     }
 
+    public boolean collisionCheck (GameObject other) {
+
+        if (Math.abs(2*((this.location.y - other.location.y) + (this.height - other.height))) < this.height + other.height) {
+            if (Math.abs(2*((this.location.x - other.location.x) + (this.width - other.width))) < this.width + other.width) {
+                onCollision(other);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public abstract void onCollision (GameObject other);
 }
