@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         //panel.addGameObject(new NormalEnemy(this, new DoubleVector(500, 500)));
 
+        panel.addGameObject(new NormalEnemy(this, new DoubleVector(500, 500)));
         this.setContentView(panel);
 
 
