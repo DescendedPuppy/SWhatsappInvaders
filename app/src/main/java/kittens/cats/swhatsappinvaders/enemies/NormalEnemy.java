@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 
+import kittens.cats.swhatsappinvaders.GameObject;
 import kittens.cats.swhatsappinvaders.MainActivity;
 import kittens.cats.swhatsappinvaders.R;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
@@ -25,6 +26,11 @@ public class NormalEnemy extends Enemy {
 
     @Override
     public void update() {
+
+    }
+
+    @Override
+    public void onCollision(GameObject other) {
 
     }
 
