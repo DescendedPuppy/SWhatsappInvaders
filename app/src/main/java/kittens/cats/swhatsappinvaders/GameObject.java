@@ -1,5 +1,7 @@
 package kittens.cats.swhatsappinvaders;
 
+import android.content.Context;
+
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 public abstract class GameObject implements Renderable {
@@ -8,20 +10,34 @@ public abstract class GameObject implements Renderable {
     private EntityType tag;
     private double width;
     private double height;
-
+    private Context context;
+    private double speed;
 
 
     public abstract void update();
 
 
 
-    public GameObject(EntityType tag, DoubleVector location){
+    public GameObject(Context context, EntityType tag, DoubleVector location){
 
         setTag(tag);
         setLocation(location);
+        this.context = context;
 
     }
 
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
+
+    public Context getContext() {
+        return context;
+    }
 
 
     public double getWidth() {
