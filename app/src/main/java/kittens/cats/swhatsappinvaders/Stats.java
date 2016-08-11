@@ -26,13 +26,13 @@ public class Stats extends GameObject {
 
     private String item;
 
-    private Stats(Context context, DoubleVector location) {
-        super(context, EntityType.STATS, location);
+    private Stats(Context context) {
+        super(context, EntityType.STATS, null);
     }
 
-    public static Stats getStats(Context context, DoubleVector location){
+    public static Stats getStats(Context context){
         if(Stats.stats == null){
-            Stats.stats = new Stats(context, location);
+            Stats.stats = new Stats(context);
         }
         return Stats.stats;
     }
@@ -48,6 +48,11 @@ public class Stats extends GameObject {
     }
 
     @Override
+    public void onCollision(GameObject other) {
+
+    }
+
+    @Override
     public void render(Canvas canvas) {
 
         halfwidth = canvas.getWidth() / 2;
@@ -57,6 +62,8 @@ public class Stats extends GameObject {
 
         Paint paint = new Paint();
         paint.setColor(Color.WHITE);
+        paint.setTextAlign(Paint.Align.CENTER);
+        paint.setTextSize(32.0f);
 
 
         canvas.drawText(""+score, (float)halfwidth, (float)bottomscreen, paint);

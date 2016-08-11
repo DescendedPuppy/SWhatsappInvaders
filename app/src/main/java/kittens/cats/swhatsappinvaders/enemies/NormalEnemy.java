@@ -8,60 +8,44 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 
-import kittens.cats.swhatsappinvaders.MainThread;
+
+import kittens.cats.swhatsappinvaders.GameObject;
+import kittens.cats.swhatsappinvaders.MainActivity;
 import kittens.cats.swhatsappinvaders.R;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
-
-
-
 public class NormalEnemy extends Enemy {
 
-    private Bitmap toBeDrawn;
-    private int tempCanvasWidth;
 
     public NormalEnemy(Context context, DoubleVector location) {
         super(context, location);
-        setSpeed(750);
     }
 
     @Override
     public void update() {
 
-    if(getLocation().x <= 0 || getLocation().x >= tempCanvasWidth - 125){
-
-
-
-        setSpeed(getSpeed() * -1);
-
-    }
-
-        setLocation(new DoubleVector(getLocation().x + (getSpeed() / 1000) * MainThread.getDeltaTime(), getLocation().y));
-
     }
 
     @Override
-    public void onCollision(kittens.cats.swhatsappinvaders.GameObject other) {
+    public void onCollision(GameObject other) {
 
     }
-
 
     @Override
     public void render(Canvas canvas) {
 
         Paint p = new Paint();
+        p.setColor(Color.GREEN);
 
-        p.setColor(Color.WHITE);
-        p.setAntiAlias(false);
-        p.setDither(true);
-        p.setFilterBitmap(false);
-
+        Bitmap invaderNormal = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.invader_normal);
 
         Rect rect = new Rect();
         rect.set((int) getLocation().x, (int) getLocation().y, ((int) getLocation().x + (int) getWidth()), ((int) getLocation().y + (int) getHeight()));
 
-        canvas.drawBitmap(toBeDrawn, null, rect, p);
+        canvas.drawBitmap(invaderNormal, null, rect, p);
 
 
     }
@@ -69,15 +53,13 @@ public class NormalEnemy extends Enemy {
     @Override
     public void init(int width, int height) {
 
-        tempCanvasWidth = width;
-
+        Log.d("NormalEnemy", "Canvas Width: "+width);
+        Log.d("NormalEnemy", "Canvas Height: "+height);
         int entityWidth = width / 12;
-        int entityHeight = height / 20;
+        int entityHeight = height / 12;
 
         setWidth(entityWidth);
         setHeight(entityHeight);
-
-        toBeDrawn = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.invader_normal);
 
     }
 }
