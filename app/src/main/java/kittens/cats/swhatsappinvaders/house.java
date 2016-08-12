@@ -42,8 +42,9 @@ public class House extends GameObject {
 
     @Override
     public void render(Canvas canvas) {
-        Paint paint = new Paint(); Rect rect = new Rect();
-        rect.set((int) getLocation().x, (int) getLocation().y, ((int) getLocation().x + (int) getWidth()), ((int) getLocation().y + (int) getHeight()));
+        Paint paint = new Paint();
+        Rect rect = new Rect();
+        rect.set((int)getLocation().y, (int)getLocation().x, (int)(getLocation().y + getWidth()), (int)(getLocation().x + getHeight()));
 
         canvas.drawBitmap(currentHouse, null, rect, paint);
 
