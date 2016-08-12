@@ -1,6 +1,7 @@
 package kittens.cats.swhatsappinvaders;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -25,19 +26,34 @@ public class Stats extends GameObject {
 
     private String item;
 
+<<<<<<< HEAD
     private Stats(DoubleVector location, double width, double height) {
         super(EntityType.STATS, location);
+=======
+    private Stats(Context context) {
+        super(context, EntityType.STATS, null);
+>>>>>>> b5dfedfedc3a1c77d6dd1133bb68367f8b9d56de
     }
 
-    public static Stats getStats(DoubleVector location, double width, double height){
+    public static Stats getStats(Context context){
         if(Stats.stats == null){
-            Stats.stats = new Stats(location, width, height);
+            Stats.stats = new Stats(context);
         }
         return Stats.stats;
     }
 
     @Override
+    public void init(int width, int height) {
+
+    }
+
+    @Override
     public void update() {
+
+    }
+
+    @Override
+    public void onCollision(GameObject other) {
 
     }
 
@@ -51,6 +67,8 @@ public class Stats extends GameObject {
 
         Paint paint = new Paint();
         paint.setColor(Color.WHITE);
+        paint.setTextAlign(Paint.Align.CENTER);
+        paint.setTextSize(32.0f);
 
 
         canvas.drawText(""+score, (float)halfwidth, (float)bottomscreen, paint);

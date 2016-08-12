@@ -1,5 +1,7 @@
 package kittens.cats.swhatsappinvaders;
 
+import android.content.Context;
+
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 public abstract class GameObject implements Renderable {
@@ -8,20 +10,34 @@ public abstract class GameObject implements Renderable {
     private EntityType tag;
     private double width;
     private double height;
-
+    private Context context;
+    private double speed;
 
 
     public abstract void update();
 
 
 
-    public GameObject(EntityType tag, DoubleVector location){
+    public GameObject(Context context, EntityType tag, DoubleVector location){
 
         setTag(tag);
         setLocation(location);
+        this.context = context;
 
     }
 
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
+
+    public Context getContext() {
+        return context;
+    }
 
 
     public double getWidth() {
@@ -63,4 +79,16 @@ public abstract class GameObject implements Renderable {
         this.tag = tag;
     }
 
+    public boolean collisionCheck (GameObject other) {
+
+        if (Math.abs(2*((this.location.y - other.location.y) + (this.height - other.height))) < this.height + other.height) {
+            if (Math.abs(2*((this.location.x - other.location.x) + (this.width - other.width))) < this.width + other.width) {
+                onCollision(other);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public abstract void onCollision (GameObject other);
 }
