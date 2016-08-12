@@ -14,7 +14,7 @@ public class ShieldItem extends Item {
         super(ItemType.SHIELD, context, location);
     }
     @Override
-    public void onUse() {
+   // public void onUse() {
         GameContext.getPlayer().setShield(true);
     }
 }
