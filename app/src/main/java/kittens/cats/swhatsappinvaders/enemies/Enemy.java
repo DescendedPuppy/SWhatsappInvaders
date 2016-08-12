@@ -12,7 +12,7 @@ public abstract class Enemy extends GameObject {
 
     public Enemy(DoubleVector location, double width, double height) {
 
-        super(EntityType.ENEMY, location, width, height);
+        super(EntityType.ENEMY, location);
 
     }
 

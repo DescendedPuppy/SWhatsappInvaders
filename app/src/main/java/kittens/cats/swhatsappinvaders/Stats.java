@@ -26,7 +26,7 @@ public class Stats extends GameObject {
     private String item;
 
     private Stats(DoubleVector location, double width, double height) {
-        super(EntityType.STATS, location, width, height);
+        super(EntityType.STATS, location);
     }
 
     public static Stats getStats(DoubleVector location, double width, double height){
