@@ -2,9 +2,12 @@ package kittens.cats.swhatsappinvaders;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Picture;
 
 import kittens.cats.swhatsappinvaders.player.Player;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
@@ -23,7 +26,7 @@ public class Stats{
     private int kills;
 
     private double halfwidth;
-    private double bottomscreen;
+    private double bottomscreen,topscreen;
     private double leftscreen;
     private double rightscreen;
 
@@ -52,6 +55,7 @@ public class Stats{
 
         halfwidth = canvas.getWidth() / 2;
         bottomscreen = canvas.getHeight() - 50;
+        topscreen = canvas.getHeight()/25;
         rightscreen = 50;
 
 
@@ -61,8 +65,15 @@ public class Stats{
         paint.setTextSize(32.0f);
 
 
-        canvas.drawText(""+score, (float)halfwidth, (float)bottomscreen, paint);
-        canvas.drawText(""+lives, (float)rightscreen, (float)bottomscreen, paint);
+        canvas.drawText(""+score, (float)halfwidth, (float)topscreen, paint);
+        Bitmap bm;
+        bm = BitmapFactory.decodeResource(null, R.drawable.spaceship);
+        Paint trymypaint;
+        trymypaint= new Paint();
+        for (int i=0;i<=lives;i++)
+        {
+            canvas.drawBitmap(bm ,canvas.getWidth()/10+(i*10),canvas.getWidth()/14,trymypaint);
+        }
 
     }
 
