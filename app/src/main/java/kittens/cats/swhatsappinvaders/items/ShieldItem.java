@@ -2,6 +2,7 @@ package kittens.cats.swhatsappinvaders.items;
 
 import android.content.Context;
 
+import kittens.cats.swhatsappinvaders.GameContext;
 import kittens.cats.swhatsappinvaders.player.Player;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
@@ -14,6 +15,6 @@ public class ShieldItem extends Item {
     }
     @Override
     public void onUse() {
-        Player.setShield=true;
+      //  GameContext.getPlayer().setShield(true);
     }
 }
