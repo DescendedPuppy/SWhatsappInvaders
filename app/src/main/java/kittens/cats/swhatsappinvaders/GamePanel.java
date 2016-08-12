@@ -13,6 +13,7 @@ import java.util.List;
 import kittens.cats.swhatsappinvaders.enemies.Enemy;
 import kittens.cats.swhatsappinvaders.items.Item;
 import kittens.cats.swhatsappinvaders.player.Player;
+import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
@@ -31,6 +32,13 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
         this.getHolder().addCallback(this);
 
+        int canvasWidth = getWidth();
+        int canvasHeight = getHeight();
+        Log.d("GamePanel", "canvasWidth: "+canvasWidth+" | canvasHeight: "+canvasHeight);
+        House house1 = new House(getContext(), new DoubleVector(canvasWidth / 15, canvasHeight / 10 * 8));
+        addGameObject(house1);
+        House house2 = new House(getContext(), new DoubleVector(canvasWidth / 1.1538, canvasHeight / 10 *8));
+        addGameObject(house2);
         GameContext.setGamePanel(this);
     }
 
