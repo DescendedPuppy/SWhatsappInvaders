@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.util.Log;
 
 import kittens.cats.swhatsappinvaders.EntityType;
 import kittens.cats.swhatsappinvaders.GameObject;
@@ -30,20 +31,12 @@ public class Player extends GameObject {
         this.setHeight(width / 9);
         this.getLocation().y = height - this.getHeight();
         this.getLocation().x = width / 2D - this.getWidth() / 2D;
+
+        Log.d("Player", this.getLocation().x + " " + this.getLocation().y);
     }
 
     @Override
     public void update() {
-    }
-
-    @Override
-    public void onCollision(GameObject other) {
-
-    }
-
-    @Override
-    public void onCollision(GameObject other) {
-
     }
 
     @Override
