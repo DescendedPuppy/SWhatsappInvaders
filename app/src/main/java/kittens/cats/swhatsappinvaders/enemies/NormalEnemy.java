@@ -17,6 +17,7 @@ import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 
 
+
 public class NormalEnemy extends Enemy {
 
     private Bitmap toBeDrawn;
@@ -29,7 +30,16 @@ public class NormalEnemy extends Enemy {
     @Override
     public void update() {
 
+
         super.update();
+ if(getLocation().x <= 0 || getLocation().x >= tempCanvasWidth - 125){
+
+        setSpeed(getSpeed() * -1);
+        setLocation(new DoubleVector(getLocation().x, getLocation().y + getHeight()));
+    }
+
+        setLocation(new DoubleVector(getLocation().x + (getSpeed() / 1000) * MainThread.getDeltaTime(), getLocation().y));
+
 
     }
 

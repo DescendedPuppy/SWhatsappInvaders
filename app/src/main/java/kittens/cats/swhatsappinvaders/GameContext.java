@@ -9,6 +9,7 @@ public class GameContext {
 
     private static Player player;
 
+    private static GamePanel gamePanel;
 
 
     public static void setPlayer(Player playerObject){
@@ -16,10 +17,19 @@ public class GameContext {
     }
 
 
-    public static Player getPlayer(){
+    public static void setGamePanel(GamePanel panel) {
+        GameContext.gamePanel = panel;
+    }
+
+
+    public static Player getPlayer() {
 
         return player;
 
+    }
+
+    public static GamePanel getGamePanel() {
+        return gamePanel;
     }
 
 }

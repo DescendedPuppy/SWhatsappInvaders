@@ -15,11 +15,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         GamePanel panel = new GamePanel(new Player(this, 3), this);
 
+
         panel.addGameObject(new NormalEnemy(this, new DoubleVector(500, 500)));
 
         //Random Tests
         panel.addGameObject(new Boss(this, new DoubleVector(500, 500)));
         panel.addGameObject(new NormalEnemy(this, new DoubleVector(400, 750)));
+
+        panel.addGameObject(new NormalEnemy(this, new DoubleVector(500, 500)));
 
         this.setContentView(panel);
 
