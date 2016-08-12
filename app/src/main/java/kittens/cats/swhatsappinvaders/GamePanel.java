@@ -2,17 +2,20 @@ package kittens.cats.swhatsappinvaders;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.util.Log;
+import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import kittens.cats.swhatsappinvaders.enemies.Enemy;
+import kittens.cats.swhatsappinvaders.enemies.NormalEnemy;
 import kittens.cats.swhatsappinvaders.items.Item;
 import kittens.cats.swhatsappinvaders.player.Player;
+import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
@@ -20,7 +23,11 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread thread;
     private List<GameObject> objects;
     private Stats stats;
-    
+    private boolean gameover = false;
+
+    private float difficulty = 1;
+    private int counter;
+
     public GamePanel(Player player, Context context) {
         super(context);
 
@@ -32,6 +39,24 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         this.getHolder().addCallback(this);
 
         GameContext.setGamePanel(this);
+
+
+    }
+
+    public void spawn(int delay) {
+
+        counter++;
+
+        if (counter % delay == 0) {
+
+            NormalEnemy normalEnemy = new NormalEnemy(getContext(), new DoubleVector(100, 150));
+            normalEnemy.setHealth(Math.round(difficulty));
+            addGameObject(normalEnemy);
+
+
+        }
+
+
     }
 
     @Override
@@ -41,7 +66,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {}
+    public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
+    }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
@@ -86,19 +112,45 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         List<GameObject> objectsCopy = new ArrayList<>(this.objects);
         for (GameObject object : objectsCopy) {
             object.update();
-            if (object instanceof Enemy) {
+
+            if (object.collisionCheck(GameContext.getPlayer())) {
+
+                GameContext.getPlayer().setHealth(0);
+
+            }
+
+
+            if (!object.isWithinBorder()) {
+                removeGameObject(object);
+            } else if (object instanceof Enemy) {
                 Enemy enemy = (Enemy) object;
                 if (enemy.getHealth() <= 0) {
+
+                    difficulty = (float) (difficulty + 0.05);
                     Item.handleDeath(enemy, this);
+                    removeGameObject(enemy);
+
                 }
             }
+            if (GameContext.getPlayer().getHealth() <= 0 && !gameover) {
+
+                gameover = true;
+                
+                thread.setRunning(false);
+
+            }
         }
+
+        spawn(50);
+
         if (this.player != null) {
             this.player.update();
         }
     }
 
     public void render(Canvas canvas) {
+
+
         this.draw(canvas);
         for (GameObject object : this.objects) {
             object.render(canvas);

@@ -15,12 +15,10 @@ import kittens.cats.swhatsappinvaders.R;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 
-
-
-
 public class NormalEnemy extends Enemy {
 
     private Bitmap toBeDrawn;
+
     public NormalEnemy(Context context, DoubleVector location) {
         super(context, location);
         setSpeed(1250);
@@ -30,16 +28,7 @@ public class NormalEnemy extends Enemy {
     @Override
     public void update() {
 
-
         super.update();
- if(getLocation().x <= 0 || getLocation().x >= tempCanvasWidth - 125){
-
-        setSpeed(getSpeed() * -1);
-        setLocation(new DoubleVector(getLocation().x, getLocation().y + getHeight()));
-    }
-
-        setLocation(new DoubleVector(getLocation().x + (getSpeed() / 1000) * MainThread.getDeltaTime(), getLocation().y));
-
 
     }
 
@@ -54,12 +43,6 @@ public class NormalEnemy extends Enemy {
 
         Paint p = new Paint();
 
-        p.setColor(Color.WHITE);
-        p.setAntiAlias(false);
-        p.setDither(true);
-        p.setFilterBitmap(false);
-
-
         Rect rect = new Rect();
         rect.set((int) getLocation().x, (int) getLocation().y, ((int) getLocation().x + (int) getWidth()), ((int) getLocation().y + (int) getHeight()));
 
@@ -71,10 +54,8 @@ public class NormalEnemy extends Enemy {
     @Override
     public void init(int width, int height) {
 
-        tempCanvasWidth = width;
-
-        int entityWidth = width / 12;
-        int entityHeight = height / 20;
+        int entityWidth = width / 20;
+        int entityHeight = height / 15;
 
         setWidth(entityWidth);
         setHeight(entityHeight);
