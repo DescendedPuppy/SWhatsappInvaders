@@ -88,14 +88,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                this.movePlayerTo(event.getX());
-                this.player.setHoldDown(true);
-                break;
             case MotionEvent.ACTION_MOVE:
-                this.movePlayerTo(event.getX());
-                break;
             case MotionEvent.ACTION_UP:
-                this.player.setHoldDown(false);
                 this.movePlayerTo(event.getX());
                 break;
         }
