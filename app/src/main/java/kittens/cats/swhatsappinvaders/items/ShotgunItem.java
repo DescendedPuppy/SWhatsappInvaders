@@ -11,4 +11,9 @@ public class ShotgunItem extends Item{
     public ShotgunItem(Context context, DoubleVector location) {
         super(ItemType.SHOTGUN, context, location);
     }
+
+    @Override
+    public void onUse() {
+
+    }
 }
