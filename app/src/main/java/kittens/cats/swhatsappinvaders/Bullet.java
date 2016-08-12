@@ -5,6 +5,7 @@ import android.content.Entity;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
@@ -12,25 +13,21 @@ import kittens.cats.swhatsappinvaders.util.DoubleVector;
  * Created by sebagreg16 on 10.08.2016.
  */
 public class Bullet extends GameObject{
-    private float speedX;
-    private float speedY;
+
+    private float speed;
     private int color;
     private int dmg;
+    private double angleCosinus;
+    private double angleSinus;
+    private double shotSize = 100;
 
-    public Bullet (int damage, float speedX, float speedY, Context context, DoubleVector location){
+    public Bullet (int damage, double angle, float speed, Context context, DoubleVector location) {
         super(context, EntityType.BULLET, location);
-        this.speedX = speedX;
-        this.speedY = speedY;
+        this.speed = speed;
+        this.angleCosinus = Math.cos(Math.toRadians(angle));
+        this.angleSinus = Math.sin(Math.toRadians(angle));
         color = Color.WHITE;
         dmg = damage;
-    }
-
-    public float getSpeedX() {
-        return speedX;
-    }
-
-    public void setSpeedX(float speedX) {
-        this.speedX = speedX;
     }
 
     public int getColor() {
@@ -49,20 +46,12 @@ public class Bullet extends GameObject{
         this.dmg = dmg;
     }
 
-    public float getSpeedY() {
-        return speedY;
-    }
-
-    public void setSpeedY(float speedY) {
-        this.speedY = speedY;
-    }
-
     @Override
     public void update() {
-        getLocation().x += speedX * MainThread.getDeltaTime() / 1000D;
-        getLocation().y += speedY * MainThread.getDeltaTime() / 1000D;
+        double radius = this.speed * MainThread.getDeltaTime() / 1000D;
 
-
+        this.setLocation(new DoubleVector(this.getLocation().x + angleCosinus * radius,
+                this.getLocation().y - angleSinus * radius));
     }
 
     @Override
@@ -74,13 +63,22 @@ public class Bullet extends GameObject{
     public void render(Canvas canvas) {
         Paint paint = new Paint();
         paint.setColor(color);
-        canvas.drawRect((float)getLocation().x, (float)getLocation().y, (float)(getLocation().x + getWidth()), (float)(getLocation().y + getHeight()), paint);
+        paint.setStrokeWidth(10F);
+
+        canvas.drawLine((float) this.getLocation().x, (float) this.getLocation().y,
+                (float) (this.getLocation().x + this.angleCosinus * this.getShotSize()),
+                (float) (this.getLocation().y - this.angleSinus * this.getShotSize()), paint);
 
     }
 
     @Override
     public void init(int width, int height) {
-        this.setWidth(width / 100);
-        this.setHeight(width / 20);
+        this.setWidth(this.angleCosinus * this.getShotSize());
+        this.setHeight(this.angleSinus * this.getShotSize());
     }
+
+    public double getShotSize() {
+        return shotSize;
+    }
+
 }
