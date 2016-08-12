@@ -41,11 +41,7 @@ public class Player extends GameObject {
 
     }
 
-
-
-
     @Override
-
     public void render(Canvas canvas) {
         Rect rect = new Rect((int) this.getLocation().x, (int) this.getLocation().y,
                 (int) (this.getLocation().x + this.getWidth()),
@@ -58,7 +54,11 @@ public class Player extends GameObject {
     }
 
     public void setHealth(int health) {
-        this.health = health;
+
+
+        if (this.health <= 4) {
+            this.health = health;
+        }
     }
 
     public int damageAndGet(int amount) {
