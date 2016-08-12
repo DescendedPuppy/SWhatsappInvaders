@@ -2,8 +2,8 @@ package kittens.cats.swhatsappinvaders.enemies;
 
 
 import android.content.Context;
-import android.util.Log;
 
+import kittens.cats.swhatsappinvaders.Bullet;
 import kittens.cats.swhatsappinvaders.EntityType;
 import kittens.cats.swhatsappinvaders.GameObject;
 import kittens.cats.swhatsappinvaders.MainThread;
@@ -22,9 +22,9 @@ public abstract class Enemy extends GameObject {
     }
 
 
-    public void doDamage(int damage){
+    public void damage(int damage){
 
-        setHealth(getHealth() - damage);
+    setHealth(getHealth() - damage);
 
     }
 
@@ -32,11 +32,12 @@ public abstract class Enemy extends GameObject {
     public void update() {
 
         if(getLocation().x <= 0 || getLocation().x >= tempCanvasWidth - getWidth()){
-        Log.d("Enemy", "Loc X: "+getLocation().x+" | TempCanvWidth: "+tempCanvasWidth+" | Width: "+getWidth());
+
             setSpeed(getSpeed() * -1);
 
             if(getLocation().x <= 0)
                 setLocation(new DoubleVector(1, getLocation().y + getHeight()));
+
             else if(getLocation().x >= tempCanvasWidth - getWidth())
                 setLocation(new DoubleVector(tempCanvasWidth - getWidth() - 3, getLocation().y + getHeight()));
 
@@ -53,6 +54,19 @@ public abstract class Enemy extends GameObject {
     public void init(int width, int height) {
 
         tempCanvasWidth = width;
+
+
+    }
+
+    @Override
+    public void onCollision(GameObject other) {
+
+        if(other.getType().equals(EntityType.BULLET)){
+
+         Bullet entity = (Bullet) other;
+            damage(entity.getDmg());
+
+        }
 
 
     }
