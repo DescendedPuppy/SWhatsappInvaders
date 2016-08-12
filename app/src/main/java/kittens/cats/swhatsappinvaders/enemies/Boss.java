@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.util.Log;
 
 import kittens.cats.swhatsappinvaders.GameObject;
 import kittens.cats.swhatsappinvaders.MainThread;
@@ -16,7 +17,6 @@ import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 public class Boss extends Enemy {
 
-    private int tempCanvasWidth;
     private Bitmap toBeDrawn;
 
 
@@ -29,13 +29,7 @@ public class Boss extends Enemy {
     @Override
     public void update() {
 
-        if(getLocation().x <= 0 || getLocation().x >= tempCanvasWidth - 125){
-
-            setSpeed(getSpeed() * -1);
-            setLocation(new DoubleVector(getLocation().x, getLocation().y + getHeight()));
-        }
-
-        setLocation(new DoubleVector(getLocation().x + (getSpeed() / 1000) * MainThread.getDeltaTime(), getLocation().y));
+        super.update();
 
     }
 
@@ -68,8 +62,8 @@ public class Boss extends Enemy {
 
         tempCanvasWidth = width;
 
-        int entityWidth = width / 12;
-        int entityHeight = height / 20;
+        int entityWidth = width / 3;
+        int entityHeight = height / 9;
 
         setWidth(entityWidth);
         setHeight(entityHeight);
