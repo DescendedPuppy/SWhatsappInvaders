@@ -41,11 +41,6 @@ public class Player extends GameObject {
 
     }
 
-    @Override
-
-    public void onCollision(GameObject other) {
-
-    }
 
     @Override
 
