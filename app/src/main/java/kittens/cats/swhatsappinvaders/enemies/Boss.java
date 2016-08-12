@@ -16,7 +16,7 @@ import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 public class Boss extends Enemy {
 
-    private int tempCanvasWidth;
+
     private Bitmap toBeDrawn;
 
 
@@ -29,6 +29,8 @@ public class Boss extends Enemy {
     @Override
     public void update() {
 
+        super.update();
+
         if(getLocation().x <= 0 || getLocation().x >= tempCanvasWidth - 125){
 
             setSpeed(getSpeed() * -1);
@@ -36,6 +38,7 @@ public class Boss extends Enemy {
         }
 
         setLocation(new DoubleVector(getLocation().x + (getSpeed() / 1000) * MainThread.getDeltaTime(), getLocation().y));
+
 
     }
 
@@ -68,8 +71,11 @@ public class Boss extends Enemy {
 
         tempCanvasWidth = width;
 
-        int entityWidth = width / 12;
-        int entityHeight = height / 20;
+
+        int entityWidth = width / 3;
+        int entityHeight = height / 9;
+
+
 
         setWidth(entityWidth);
         setHeight(entityHeight);

@@ -10,6 +10,8 @@ import android.view.SurfaceView;
 import java.util.ArrayList;
 import java.util.List;
 
+import kittens.cats.swhatsappinvaders.enemies.Enemy;
+import kittens.cats.swhatsappinvaders.items.Item;
 import kittens.cats.swhatsappinvaders.player.Player;
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
@@ -75,8 +77,15 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update() {
-        for (GameObject object : this.objects) {
+        List<GameObject> objectsCopy = new ArrayList<>(this.objects);
+        for (GameObject object : objectsCopy) {
             object.update();
+            if (object instanceof Enemy) {
+                Enemy enemy = (Enemy) object;
+                if (enemy.getHealth() <= 0) {
+                    Item.handleDeath(enemy, this);
+                }
+            }
         }
         if (this.player != null) {
             this.player.update();
@@ -94,6 +103,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         if (this.player != null) {
             this.player.render(canvas);
         }
+        this.stats.render(canvas);
     }
 
     public void addGameObject(GameObject object) {
