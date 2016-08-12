@@ -2,6 +2,7 @@ package kittens.cats.swhatsappinvaders.items;
 
 import android.content.Context;
 
+import kittens.cats.swhatsappinvaders.GameContext;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 /**
@@ -15,6 +16,7 @@ public class DoubleItem extends Item {
     @Override
     public void onUse() {
 
-
+        GameContext.getPlayer().enableDefaultMode();
+        GameContext.getPlayer().setShotAmount(GameContext.getPlayer().getShotAmount()+1);
     }
 }
