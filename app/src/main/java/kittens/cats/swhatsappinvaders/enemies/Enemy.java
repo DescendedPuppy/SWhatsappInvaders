@@ -4,7 +4,9 @@ package kittens.cats.swhatsappinvaders.enemies;
 import android.content.Context;
 import android.util.Log;
 
+import kittens.cats.swhatsappinvaders.Bullet;
 import kittens.cats.swhatsappinvaders.EntityType;
+import kittens.cats.swhatsappinvaders.GameContext;
 import kittens.cats.swhatsappinvaders.GameObject;
 import kittens.cats.swhatsappinvaders.MainThread;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
@@ -22,9 +24,9 @@ public abstract class Enemy extends GameObject {
     }
 
 
-    public void doDamage(int damage){
+    public void damage(int damage){
 
-        setHealth(getHealth() - damage);
+    setHealth(getHealth() - damage);
 
     }
 
@@ -53,6 +55,19 @@ public abstract class Enemy extends GameObject {
     public void init(int width, int height) {
 
         tempCanvasWidth = width;
+
+
+    }
+
+    @Override
+    public void onCollision(GameObject other) {
+
+        if(other.getType().equals(EntityType.BULLET)){
+
+         Bullet entity = (Bullet) other;
+            damage(entity.getDmg());
+
+        }
 
 
     }
