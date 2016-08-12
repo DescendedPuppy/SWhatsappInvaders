@@ -17,8 +17,7 @@ public abstract class GameObject implements Renderable {
     public abstract void update();
 
 
-
-    public GameObject(Context context, EntityType tag, DoubleVector location){
+    public GameObject(Context context, EntityType tag, DoubleVector location) {
 
         setTag(tag);
         setLocation(location);
@@ -57,9 +56,9 @@ public abstract class GameObject implements Renderable {
     }
 
 
-    public void setLocation(DoubleVector location){
+    public void setLocation(DoubleVector location) {
 
-      this.location = location;
+        this.location = location;
 
     }
 
@@ -69,7 +68,7 @@ public abstract class GameObject implements Renderable {
 
     }
 
-    public EntityType getType(){
+    public EntityType getType() {
 
         return this.tag;
 
@@ -79,10 +78,10 @@ public abstract class GameObject implements Renderable {
         this.tag = tag;
     }
 
-    public boolean collisionCheck (GameObject other) {
+    public boolean collisionCheck(GameObject other) {
 
-        if (Math.abs(2*((this.location.y - other.location.y) + (this.height - other.height))) < this.height + other.height) {
-            if (Math.abs(2*((this.location.x - other.location.x) + (this.width - other.width))) < this.width + other.width) {
+        if (Math.abs(2 * ((this.location.y - other.location.y) + (this.height - other.height))) < this.height + other.height) {
+            if (Math.abs(2 * ((this.location.x - other.location.x) + (this.width - other.width))) < this.width + other.width) {
                 onCollision(other);
                 return true;
             }
@@ -90,5 +89,15 @@ public abstract class GameObject implements Renderable {
         return false;
     }
 
-    public abstract void onCollision (GameObject other);
+
+    public boolean isWithinBorder() {
+
+        if (getLocation().x >= GameContext.getGamePanel().getWidth() + getWidth() || getLocation().x <= -30
+                || getLocation().y >= GameContext.getGamePanel().getHeight() + getHeight() || getLocation().y + getHeight() <= 0)
+            return false;
+        return true;
+
+    }
+
+    public abstract void onCollision(GameObject other);
 }
