@@ -83,32 +83,32 @@ public abstract class Item extends GameObject{
                 if (randomn == 74 || randomn == 69 || randomn == 63 || randomn == 30)
                 {
 //double
-                    panel.addGameObject(new Item(ItemType.DOUBLE, panel.getContext(),
+                    panel.addGameObject(new DoubleItem(panel.getContext(),
                             new DoubleVector(enemy.getLocation().x, enemy.getLocation().y)));
                 }
 
                 if (randomn == 92 || randomn == 33 || randomn == 3 || randomn == 44)
                 {
 //t
-                    panel.addGameObject(new Item(ItemType.PAUSE, panel.getContext(),
+                    panel.addGameObject(new Pauseitem(panel.getContext(),
                             new DoubleVector(enemy.getLocation().x, enemy.getLocation().y)));
                 }
 
                 if (randomn == 98 || randomn == 21 || randomn == 55 || randomn == 56)
                 {
 //laser
-                    panel.addGameObject(new Item(ItemType.LAZER, panel.getContext(),
+                    panel.addGameObject(new LazerItem(panel.getContext(),
                             new DoubleVector(enemy.getLocation().x, enemy.getLocation().y)));
                 }
                 if (randomn == 34 || randomn == 36 || randomn == 96 || randomn == 2)
                 {
 //l
-                    panel.addGameObject(new Item(ItemType.lIFE, panel.getContext(),
-                    new DoubleVector(enemy.getLocation().x, enemy.getLocation().y)));
+                    panel.addGameObject(new HelthItem(panel.getContext(),
+                            new DoubleVector(enemy.getLocation().x, enemy.getLocation().y)));
                 }
                 if (randomn == 30 || randomn == 8 || randomn == 71)
                 {
-                    panel.addGameObject(new Item(ItemType.NUKE, panel.getContext(),
+                    panel.addGameObject(new NukeItem(panel.getContext(),
                             new DoubleVector(enemy.getLocation().x, enemy.getLocation().y)));
 //n
                 }
