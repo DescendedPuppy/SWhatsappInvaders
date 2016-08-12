@@ -6,17 +6,20 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import kittens.cats.swhatsappinvaders.player.Player;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 /**
  * Ich bin Joris.
  */
-public class Stats extends GameObject {
+public class Stats{
 
     private static Stats stats;
 
+    private Player player;
+
     private int score = 10000;
-    private int lives = 3;
+    private int lives;
     private int kills;
 
     private double halfwidth;
@@ -27,38 +30,35 @@ public class Stats extends GameObject {
     private String item;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private Stats(DoubleVector location, double width, double height) {
         super(EntityType.STATS, location);
 =======
     private Stats(Context context) {
         super(context, EntityType.STATS, null);
 >>>>>>> b5dfedfedc3a1c77d6dd1133bb68367f8b9d56de
+=======
+    private Stats() {
+        player = GameContext.getPlayer();
+>>>>>>> 04e2112d90612cdc8f786c04b9e7298fe149c5f3
     }
 
-    public static Stats getStats(Context context){
+    public static Stats getStats(){
         if(Stats.stats == null){
-            Stats.stats = new Stats(context);
+            Stats.stats = new Stats();
         }
         return Stats.stats;
     }
 
-    @Override
-    public void init(int width, int height) {
 
-    }
 
-    @Override
-    public void update() {
 
-    }
 
-    @Override
-    public void onCollision(GameObject other) {
 
-    }
 
-    @Override
     public void render(Canvas canvas) {
+
+        lives = player.getHealth();
 
         halfwidth = canvas.getWidth() / 2;
         bottomscreen = canvas.getHeight() - 50;

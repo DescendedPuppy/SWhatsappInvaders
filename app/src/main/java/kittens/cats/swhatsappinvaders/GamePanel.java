@@ -26,8 +26,12 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
         this.player = player;
         this.objects = new ArrayList<>();
+        GameContext.setPlayer(player);
+        this.stats = Stats.getStats();
 
         this.getHolder().addCallback(this);
+
+        GameContext.setGamePanel(this);
     }
 
     @Override
@@ -54,25 +58,22 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
-    float touchX = -1;
-    float touchY = -1;
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        touchX = event.getX();
-        touchY = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                this.player.getLocation().x = touchX;
-                break;
             case MotionEvent.ACTION_MOVE:
-                this.player.getLocation().x = touchX;
-                break;
             case MotionEvent.ACTION_UP:
-                this.player.getLocation().x = touchX;
+                this.movePlayerTo(event.getX());
                 break;
         }
         return true;
+    }
+
+    private void movePlayerTo(double pos) {
+        if (pos + this.player.getWidth() < this.getWidth()) {
+            this.player.getLocation().x = pos;
+        }
     }
 
     public void update() {
@@ -85,9 +86,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                     Item.handleDeath(enemy, this);
                 }
             }
-        }
-        if (this.stats != null) {
-            this.stats.update();
         }
         if (this.player != null) {
             this.player.update();
