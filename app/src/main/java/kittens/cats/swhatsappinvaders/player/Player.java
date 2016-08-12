@@ -40,7 +40,7 @@ public class Player extends GameObject {
     public void onCollision(GameObject other) {
 
     }
-    
+
     @Override
     public void render(Canvas canvas) {
         Rect rect = new Rect((int) this.getLocation().x, (int) this.getLocation().y,
