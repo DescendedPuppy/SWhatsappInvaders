@@ -94,6 +94,12 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                     Item.handleDeath(enemy, this);
                 }
             }
+            for (GameObject colliding : this.objects) {
+                object.collisionCheck(colliding);
+            }
+            if (this.player.collisionCheck(object)) {
+                object.onCollision(this.player);
+            }
         }
         if (this.player != null) {
             this.player.update();

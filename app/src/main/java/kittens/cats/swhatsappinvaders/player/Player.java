@@ -8,8 +8,10 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 
 import kittens.cats.swhatsappinvaders.EntityType;
+import kittens.cats.swhatsappinvaders.GameContext;
 import kittens.cats.swhatsappinvaders.GameObject;
 import kittens.cats.swhatsappinvaders.R;
+import kittens.cats.swhatsappinvaders.enemies.Enemy;
 import kittens.cats.swhatsappinvaders.player.shotmethods.DefaultShotMethod;
 import kittens.cats.swhatsappinvaders.player.shotmethods.ShotgunShotMethod;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
@@ -54,7 +56,10 @@ public class Player extends GameObject {
 
     @Override
     public void onCollision(GameObject other) {
-
+        if (other instanceof Enemy) {
+            this.damageAndGet(((Enemy) other).getDamage());
+            GameContext.getGamePanel().removeGameObject(other);
+        }
     }
 
 
