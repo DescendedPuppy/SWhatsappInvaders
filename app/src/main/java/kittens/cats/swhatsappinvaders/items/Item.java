@@ -2,10 +2,9 @@ package kittens.cats.swhatsappinvaders.items;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 
 import java.util.Random;
 
@@ -13,7 +12,6 @@ import kittens.cats.swhatsappinvaders.EntityType;
 import kittens.cats.swhatsappinvaders.GameObject;
 import kittens.cats.swhatsappinvaders.GamePanel;
 import kittens.cats.swhatsappinvaders.MainThread;
-import kittens.cats.swhatsappinvaders.R;
 import kittens.cats.swhatsappinvaders.enemies.Enemy;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
@@ -50,7 +48,10 @@ public abstract class Item extends GameObject{
 
     @Override
     public void render(Canvas canvas) {
-        canvas.drawBitmap(this.type.getBitmap(this.getContext()), (float) this.getLocation().x, (float) this.getLocation().y, new Paint());
+        Rect container = new Rect((int) this.getLocation().x, (int) this.getLocation().y,
+                (int) (this.getLocation().x + this.getWidth()),
+                (int) (this.getLocation().y + this.getHeight()));
+        canvas.drawBitmap(this.type.getBitmap(this.getContext()), null, container, new Paint());
     }
 
     @Override
