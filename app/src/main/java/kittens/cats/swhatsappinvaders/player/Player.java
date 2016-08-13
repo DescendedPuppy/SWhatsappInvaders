@@ -10,16 +10,27 @@ import android.graphics.Rect;
 import kittens.cats.swhatsappinvaders.EntityType;
 import kittens.cats.swhatsappinvaders.GameObject;
 import kittens.cats.swhatsappinvaders.R;
+import kittens.cats.swhatsappinvaders.player.shotmethods.DefaultShotMethod;
+import kittens.cats.swhatsappinvaders.player.shotmethods.ShotgunShotMethod;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
 
 public class Player extends GameObject {
 
     private Bitmap spaceshipBitmap;
     private int health;
+    private boolean holdDown = false;
+
+    private long shootDelta = 300;
+    private long lastShot = 0;
+    private int shotAmount = 10;
+
+    private ShotMethod shotMethod;
 
     public Player(Context context, int health) {
         super(context, EntityType.PLAYER, new DoubleVector(0, 0));
         this.health = health;
+
+        this.shotMethod = new DefaultShotMethod(this);
     }
 
     @Override
@@ -34,6 +45,11 @@ public class Player extends GameObject {
 
     @Override
     public void update() {
+        long currentTime = System.currentTimeMillis();
+        if (this.isHoldDown() && currentTime - this.lastShot >= this.shootDelta) {
+            this.lastShot = currentTime;
+            this.getShotMethod().shoot();
+        }
     }
 
     @Override
@@ -60,6 +76,54 @@ public class Player extends GameObject {
 
     public int damageAndGet(int amount) {
         return this.health -= amount;
+    }
+
+    public boolean isHoldDown() {
+        return this.holdDown;
+    }
+
+    public void setHoldDown(boolean holdDown) {
+        this.holdDown = holdDown;
+    }
+
+    public long getShootDelta() {
+        return this.shootDelta;
+    }
+
+    public void setShootDelta(long shootDelta) {
+        this.shootDelta = shootDelta;
+    }
+
+    public long getLastShot() {
+        return this.lastShot;
+    }
+
+    public void setLastShot(long lastShot) {
+        this.lastShot = lastShot;
+    }
+
+    public int getShotAmount() {
+        return this.shotAmount;
+    }
+
+    public void setShotAmount(int shotAmount) {
+        this.shotAmount = shotAmount;
+    }
+
+    public ShotMethod getShotMethod() {
+        return this.shotMethod;
+    }
+
+    public void setShotMethod(ShotMethod shotMethod) {
+        this.shotMethod = shotMethod;
+    }
+
+    public void enableShotgunMode() {
+        this.setShotMethod(new ShotgunShotMethod(this));
+    }
+
+    public void enableDefaultMode() {
+        this.setShotMethod(new DefaultShotMethod(this));
     }
 
 }
