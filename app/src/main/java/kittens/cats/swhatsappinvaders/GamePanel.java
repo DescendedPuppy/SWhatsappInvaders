@@ -91,6 +91,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             if (object instanceof Enemy) {
                 Enemy enemy = (Enemy) object;
                 if (enemy.getHealth() <= 0) {
+                    this.removeGameObject(enemy);
                     Item.handleDeath(enemy, this);
                 }
             }

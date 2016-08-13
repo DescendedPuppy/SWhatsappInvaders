@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-import kittens.cats.swhatsappinvaders.GameObject;
 import kittens.cats.swhatsappinvaders.MainThread;
 import kittens.cats.swhatsappinvaders.R;
 import kittens.cats.swhatsappinvaders.util.DoubleVector;
@@ -39,11 +38,6 @@ public class Boss extends Enemy {
 
         setLocation(new DoubleVector(getLocation().x + (getSpeed() / 1000) * MainThread.getDeltaTime(), getLocation().y));
 
-
-    }
-
-    @Override
-    public void onCollision(GameObject other) {
 
     }
 

@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.util.Log;
 
 import kittens.cats.swhatsappinvaders.MainThread;
 import kittens.cats.swhatsappinvaders.R;
@@ -42,12 +41,6 @@ public class NormalEnemy extends Enemy {
 
 
     }
-
-    @Override
-    public void onCollision(kittens.cats.swhatsappinvaders.GameObject other) {
-
-    }
-
 
     @Override
     public void render(Canvas canvas) {
