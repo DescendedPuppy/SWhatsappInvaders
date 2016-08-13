@@ -90,5 +90,14 @@ public abstract class GameObject implements Renderable {
         return false;
     }
 
+
+    public boolean isWithinBorders() {
+        int canvasWidth = GameContext.getGamePanel().getWidth();
+        int canvasHeight = GameContext.getGamePanel().getHeight();
+        return this.getLocation().x <= canvasWidth && this.getLocation().x + this.getWidth() >= 0
+                && this.getLocation().y <= canvasHeight
+                && this.getLocation().y + this.getHeight() >= 0;
+    }
+
     public abstract void onCollision (GameObject other);
 }

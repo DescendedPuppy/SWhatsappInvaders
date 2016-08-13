@@ -2,7 +2,6 @@ package kittens.cats.swhatsappinvaders;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -86,6 +85,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         List<GameObject> objectsCopy = new ArrayList<>(this.objects);
         for (GameObject object : objectsCopy) {
             object.update();
+            if (!object.isWithinBorders()) {
+                this.removeGameObject(object);
+            }
             if (object instanceof Enemy) {
                 Enemy enemy = (Enemy) object;
                 if (enemy.getHealth() <= 0) {
