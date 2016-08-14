@@ -57,19 +57,25 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    private float touchStart;
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                this.movePlayerTo(event.getX());
+                this.touchStart = event.getX();
                 this.player.setHoldDown(true);
                 break;
             case MotionEvent.ACTION_MOVE:
-                this.movePlayerTo(event.getX());
+                float touchDelta = event.getX() - this.touchStart;
+                double newX = this.player.getLocation().x + touchDelta;
+                if (newX >= 0 && newX + this.player.getWidth() <= this.getWidth()) {
+                    this.player.getLocation().x = newX;
+                }
+                this.touchStart = event.getX();
                 break;
             case MotionEvent.ACTION_UP:
                 this.player.setHoldDown(false);
-                this.movePlayerTo(event.getX());
                 break;
         }
         return true;
